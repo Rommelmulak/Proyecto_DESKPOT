@@ -16,7 +16,7 @@
  * @author Alejandro Martin
  * @brief ests funcion es la encargada de repetir el juego en bucle
  * @param los agumentos del main (argc y argv)
- * @return, 0 o 1, dependiendo del error
+ * @return, 0 o 1,dependiendo del error
  */
 int main(int argc, char *argv[]){
   Game game; /*De tipo game (No puntero)*/
