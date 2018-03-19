@@ -18,7 +18,7 @@
  * @param los agumentos del main (argc y argv)
  * @return, 0 o 1,dependiendo del error
  */
-int main(int argc,char *argv[]){
+int main(int argc,char *argv []){
   Game game; /*De tipo game (No puntero)*/
   T_Command command = NO_CMD;
   Graphic_engine *gengine;
