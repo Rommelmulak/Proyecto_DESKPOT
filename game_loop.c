@@ -23,7 +23,7 @@ int main(int argc,char *argv []){
   T_Command command = NO_CMD;
   Graphic_engine *gengine;
   char parametro[WORD_SIZE+1] = " "; /*parametro para meter objeto (cogerlo)*/
-  FILE *pf=NULL;/*puntero a file (abrir fichero log)*/
+  FILE *pf=NULL;/*puntero  a file (abrir fichero log)*/
 
   /*Describe como tenemos que ejecutar el programa correctamente
     y que le tenemos que pasar como argumento*/
