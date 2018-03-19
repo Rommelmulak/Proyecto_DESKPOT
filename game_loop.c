@@ -2,7 +2,7 @@
  * @brief Define el bucle del juego
  *
  * @file game_loop.c
- * @author FRNJ & AMH
+ * @author FJNR & AMH & CMF & MLR
  * @version 1.0
  * @date 05-02-2018
  * @copyright GNU Public License

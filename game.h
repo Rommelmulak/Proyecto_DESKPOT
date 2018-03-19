@@ -3,7 +3,7 @@
 *
 *
 *@file game.h
-*@author FJNR & AMH
+*@author FJNR & AMH & CMF & MLR
 *@version 1.0
 *@date 03/02/2018
 *@copyright GNU Public License
@@ -18,20 +18,22 @@
 #include "object.h"
 #include "dice.h"
 
-/*Estructura de game 101 espacios , comandos id jugador ,id objeto*/
+/**
+ * @brief Estructura de game 101 espacios , comandos id jugador ,id objeto
+*/
 typedef struct _Game{
-  Player* player; /*Campo del Jugador*/
-  Object* objects[MAX_ID]; /*Campo del Objeto*/
-  Space* spaces[MAX_SPACES + 1]; /*Campo de Espacios*/
-  T_Command last_cmd; /*Hace referencia al ultimo comando*/
-  Dice * dice;/*Con esto podemos utilizar el dado*/
-  char* param;/*string (control de descripcion grafica)*/
-  STATUS flag_command;/*Flag de status (para ver si un comando es correcto o incorrecto)*/
+  Player* player; /*!< Campo del Jugador*/
+  Object* objects[MAX_ID]; /*!< Campo del Objeto*/
+  Space* spaces[MAX_SPACES + 1]; /*!< Campo de Espacios*/
+  T_Command last_cmd; /*!< Hace referencia al ultimo comando*/
+  Dice * dice;/*!< Con esto podemos utilizar el dado*/
+  char* param;/*!< string (control de descripcion grafica)*/
+  STATUS flag_command;/*!< Flag de status (para ver si un comando es correcto o incorrecto)*/
 } Game;
 
 
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief Inicialización de la estructura Game
  * @param game, puntero a estructura Game (dirección)
@@ -41,7 +43,7 @@ STATUS game_create(Game* game);
 
 
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief Crea el juego, carga las casillas (data.dat) y ponen el objeto y jugador
     en la posición primera.
@@ -64,7 +66,7 @@ STATUS game_update(Game* game, T_Command cmd,char *param,FILE *pf);
 
 
 
-/*
+/**
  * @author Alejandro Martin
  * @brief Elimina las casillas creadas en la función anterior
  * @param game, puntero a estructura Game (dirección)
@@ -129,7 +131,7 @@ void game_print_data(Game* game);
 
 
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief Retorna la casilla (asociándola con una posición predeterminada)
     y con el id (param)
@@ -142,7 +144,7 @@ Space* game_get_space(Game* game, Id id);
 
 
 
-/*
+/**
  * @author Alejandro Martin
  * @brief Retorna el objeto (asociándola con una posición predeterminada)
     y con el id (param)
@@ -186,7 +188,7 @@ T_Command game_get_last_command(Game* game);
 
 
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief Crea un objeto , comprobando el array de objetos ,lo recorre Entero
     hasta que se acaba y anade el objeto pasado por parametro
@@ -209,7 +211,7 @@ BOOL game_get_object_player(Game* game , Object* object);
 
 
 
-/*
+/**
  * @author Alejandro Martin
  * @brief Crea una casilla una vez comprobado el array (hasta que apunte a NULL)
     el espacio que se añade es el parámetro
@@ -221,7 +223,7 @@ STATUS game_add_space(Game* game, Space* space);
 
 
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief modificamos un string (parametro) descripcion grafica
  * @param game, puntero a estructura Game (dirección)

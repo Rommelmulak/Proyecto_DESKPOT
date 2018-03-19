@@ -1,8 +1,8 @@
-/*
+/**
 *@brief Implementa los comandos
 *
 *@file command.c
-*@author FJNR & AMH
+*@author FJNR & AMH & CMF & MLR
 *@version 1.0
 *@date 01/02/2018
 *@copyright GNU Public License
@@ -16,9 +16,13 @@
 #define CMD_LENGHT 128 /*Longuitud maxima de comando*/
 #define N_CMD 10 /*Numero maximo de comandos*/
 
-/* Puntero a char, es una tabla de comandos que el jugador introduce por pantalla */
+/** 
+ * @brief Puntero a char, es una tabla de comandos que el jugador introduce por pantalla 
+*/
 char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Following", "Previous","Left","Right","Get","Drop","dice_roll"};
-/*Puntero a char, es una tabla de comandos que tendra que pulsar el jugador en la partida*/
+/**
+ * @brief Puntero a char, es una tabla de comandos que tendra que pulsar el jugador en la partida
+*/
 char *short_cmd_to_str[N_CMD] = {"","","e","f","p","l","r","g","d","t"};
 
 

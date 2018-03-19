@@ -3,7 +3,7 @@
 *
 *
 *@file player.c
-*@author FJNR & AMH
+*@author FJNR & AMH & CMF & MLR
 *@version 1.0
 *@date 06/02/2018
 *@copyright GNU Public License
@@ -18,18 +18,20 @@
 #include "player.h"
 
 
-/*Estrucura que para las caracteristicas de player*/
+/**
+ * @brief Estrucura que para las caracteristicas de player
+*/
 struct _Player {
-  Id player_id; /*Identificador del jugador*/
-  char name[WORD_SIZE+1]; /*Nomdre del jugador*/
-  Id space_id;/*Identificador del espacio done esta el jugador*/
-  Set *inventory_items;/*Set de los objetos del jugador*/
+  Id player_id; /*!< Identificador del jugador*/
+  char name[WORD_SIZE+1]; /*!< Nomdre del jugador*/
+  Id space_id;/*!< Identificador del espacio done esta el jugador*/
+  Set *inventory_items;/*!< Set de los objetos del jugador*/
 };
 
 
 
-/*
- * @author Francisco Nanclares
+/**
+ * @author Miguel Angel Lianno
  * @brief Se encarga de crear el player,
    y poner el caracter fin de cadena al final del nombre de este
  * @param id, de tipo Id
@@ -54,8 +56,8 @@ Player* player_create (Id id){
 
 
 
-/*
- * @author Francisco Nanclares
+/**
+ * @author Miguel Angel Lianno
  * @brief Libera memoria para player.
  * @param Player: puntero a Player .
  * @return status OK o ERROR.
@@ -72,8 +74,8 @@ STATUS player_destroy (Player* player){
 
 
 
-/*
- * @author Alejandro Martin
+/**
+ * @author Miguel Angel Lianno
  * @brief Pone o cambia el nombre del player
  * @param objeto: puntero a Objeto.
  * @param name: puntero a char.
@@ -91,8 +93,8 @@ STATUS player_set_name (Player* player, char* name){
 }
 
 
-/*
- * @author Francisco Nanclares
+/**
+ * @author Miguel Angel Lianno
  * @brief Pone o cambia la localizacion de player
  * @param player: puntero a Player.
  * @param location: campo de Space.
@@ -109,7 +111,7 @@ STATUS player_set_location(Player* player,Id location) {
 
 
 /*
- * @author Francisco Nanclares
+ * @author Miguel Angel Lianno
  * @brief Devuelve el nombre asignado a un player
  * @param player: puntero a player.
  * @return name, el nombre que asignamos al player
@@ -123,8 +125,8 @@ const char * player_get_name(Player* player) {
 
 
 
-/*
- * @author Alejandro Martin
+/**
+ * @author Miguel Angel Lianno
  * @brief Devuelve el set de objetos de un jugador
  * @param player: puntero a Player.
  * @return player->inventory_items (puntero a Set)
@@ -137,8 +139,8 @@ Set *player_get_inventory_items (Player *player){
 }
 
 
-/*
- * @author Alejandro Martin
+/**
+ * @author Miguel Angel Lianno
  * @brief Devuelve la location
  * @param player: puntero a Player.
  * @return player->location(localizacion)
@@ -152,8 +154,8 @@ Id player_get_location(Player* player) {
 
 
 
-/*
- * @author Alejandro Martin
+/**
+ * @author Miguel Angel Lianno
  * @brief Devuelve el id del player
  * @param player: puntero a player.
  * @return player->player_id(identificador)
@@ -167,8 +169,8 @@ Id player_get_id(Player * player){
 
 
 
-/*
- * @author Francisco Nanclares
+/**
+ * @author Miguel Angel Lianno
  * @brief Quita un objeto al jugador
  * @param pla: puntero a player.
  * @return status OK o ERROR
@@ -186,8 +188,8 @@ STATUS player_delete_inventory_item(Player *player){
 
 
 
-/*
- * @author Francisco Nanclares
+/**
+ * @author Miguel Angel Lianno
  * @brief Pone un objeto al jugador
  * @param pla: puntero a player.
  * @param id: Identificador
@@ -203,16 +205,17 @@ STATUS player_add_inventory_item(Player *player , Id id){
   return OK;
 }
 
+ /**
+ * USO ALTERNATIVO ==> PLAYER PRINT: Control de errores Debugging
+ */
 
-/*
- * @author Alejandro Martin
+/**
+ * @author Miguel Angel Lianno
  * @brief Muestra por la pantalla de salida, tanto el id, como el nombre del player
  * @param player: puntero a player.
  * @return status, OK o ERROR
  */
- /**
- * USO ALTERNATIVO ==> PLAYER PRINT: Control de errores Debugging
- */
+
 STATUS player_print(Player* player) {
   if (!player) {
     return ERROR;
