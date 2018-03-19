@@ -2,7 +2,7 @@
 *@brief Muestra la funcionalidad de la estructura de datos
 *
 *@file command.h
-*@author FJNR & AMH
+*@author FJNR & AMH & CMF & MLR
 *@version 1.0
 *@date 01/02/2018
 *@copyright GNU Public License
@@ -11,7 +11,9 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
-/*Enumeración de cada comando posible*/
+/**
+ * @brief Enumeración de cada comando posible
+*/
 typedef enum enum_Command {
     NO_CMD = -1,
     UNKNOWN, /*0*/

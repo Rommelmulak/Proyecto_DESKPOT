@@ -2,7 +2,7 @@
  * @brief Define un motor gráfico
  *
  * @file graphic_engine.c
- *@author FJNR & AMH
+ *@author FJNR & AMH & CMF & MLR
  * @version 1.0
  *@date 05/02/2018
  * @copyright GNU Public License
@@ -15,7 +15,8 @@
 #include "graphic_engine.h"
 #include "dice.h"
 
-#define NUM_OBJ 4 /*Numero de objeto de */
+/** @brief Numero de objeto de */
+#define NUM_OBJ 4 
 
 /**                 Definidos en:
                         ||
@@ -33,7 +34,10 @@ PREVIOUS = 3 <==command.h
 SCREEN_MAX_STR = 80 <==screen.h
 P.F.: Private Function
 */
-/*Estructura que define el Graphic_engine tamaño del area*/
+
+/**
+ *@brief Estructura que define el Graphic_engine tamaño del area
+*/
 struct _Graphic_engine{
   Area *map, /*Area del mapa*/
        *descript,/*Zona de descipcion de la pantalla*/
@@ -45,8 +49,8 @@ struct _Graphic_engine{
 
 
 
-/*
- * @author Alejandro Martin
+/**
+ * @author Francisco Nanclares
  * @brief Tiene la función de crear el área (se generan unos puntos en la
     pantalla con: (x,y,width,height)) de los interfaces del juego
     (inicializa la estructura de Graphic_engine)
@@ -77,8 +81,8 @@ Graphic_engine *graphic_engine_create(){
 
 
 
-/*
- * @author Alejandro Martin
+/**
+ * @author Francisco Nanclares
  * @brief Tiene la función de liberar la memoria de todos los campos de ge
  * @param "ge", el puntero a "Graphic_engine"
  * @return, ya que es una función de tipo void

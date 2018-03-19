@@ -3,7 +3,7 @@
 *
 *
 *@file screen.c
-*@author FJNR & AMH
+*@author FJNR & AMH & CMF & MLR
 *@version 1.0
 *@date 04/02/2018
 *@copyright GNU Public License
@@ -17,15 +17,22 @@
 
 #pragma GCC diagnostic ignored "-Wpedantic"
 
-#define ROWS 32 /*Numero de filas de la pantalla que se muestra (No interfaz, sino pantalla ==> Color azul)*/
-#define COLUMNS 107 /*Numero de columnas de la pantalla que se muestra (No interfaz, sino pantalla ==> Color azul)*/
-#define TOTAL_DATA (ROWS * COLUMNS) + 1 /*Numero de datos totales en pantalla*/
 
-#define BG_CHAR '~'/*simbolo*/
-#define FG_CHAR ' '/*simbolo*/
-#define PROMPT " prompt:> " /*Macro que define el comienzo del input de los cmd*/
+/** @brief Numero de filas de la pantalla que se muestra (No interfaz, sino pantalla ==> Color azul)*/
+#define ROWS 32 
+/** @brief Numero de columnas de la pantalla que se muestra (No interfaz, sino pantalla ==> Color azul)*/
+#define COLUMNS 107 
+/** @brief Numero de datos totales en pantalla*/
+#define TOTAL_DATA (ROWS * COLUMNS) + 1 
+/** @brief simbolo (churrito)*/
+#define BG_CHAR '~'
+/** @brief simbolo (espacio)*/
+#define FG_CHAR ' '
+/** @brief Macro que define el comienzo del input de los cmd*/
+#define PROMPT " prompt:> " 
+ /** @brief Macro (funcionalidad) que permite determinar el tamano de una ventana*/
+#define ACCESS(d, x, y) (d + ((y) * COLUMNS) + (x))
 
-#define ACCESS(d, x, y) (d + ((y) * COLUMNS) + (x)) /*Macro (funcionalidad) que permite determinar el tamano de una ventana*/
 /**                 Definidos en:
                         ||
                         ||
@@ -43,14 +50,16 @@ SCREEN_MAX_STR = 80 <==screen.h
 P.F.: Private Function
 */
 
-/*Estructura que define la posición y tamaño de cada área ,y un puntero a char
+/**
+ @brief Estructura que define la posición y tamaño de cada área ,y un puntero a char
   (cursor) que sirve para una "linked list"*/
 struct _Area{
-  int x, y, width, height;/*x=inicio en eje x / y =inicio en eje y width = anchura de la interfaz height = altura interfaz*/
-  char *cursor; /*campo cursor, para las funciones: screen_area_cursor_is_out_of_bounds   y   screen_area_reset_cursor*/
+  int x, y, width, height;/*!< x=inicio en eje x / y =inicio en eje y width = anchura de la interfaz height = altura interfaz*/
+  char *cursor; /*!< campo cursor, para las funciones: screen_area_cursor_is_out_of_bounds   y   screen_area_reset_cursor*/
 };
 
-char *__data;/*datos (string)*/
+/** @brief datos (string)*/
+char *__data;
 
 /****************************/
 /*    Funciones Privadas   */
@@ -64,7 +73,7 @@ void screen_utils_replaces_special_chars(char* str);
 /****************************/
 
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief Reserva memoria dinámica para data y pone todos los caractes a BG_CHAR
  * @param nada
@@ -82,7 +91,7 @@ void screen_init(){
 
 
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief Libera memoria dinámica para "__data"
  * @param nada
@@ -95,7 +104,7 @@ void screen_destroy(){
 
 
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief Colorea la pantalla de azul donde no hay interfaz
     y de gris donde se desarrolla el juego.
@@ -130,7 +139,7 @@ void screen_paint(){
 
 
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief Escribe por pantalla prompt: y coge las columnas al imprimir
  * @param str, un puntero a char, el string
@@ -144,7 +153,7 @@ void screen_gets(char *str){
 
 
 
-/*
+/**
  * @author Alejandro Martin
  * @brief Crea memoria dinámica para el area y copia el caracter c a los
   primeros n caracteres del string
@@ -171,7 +180,7 @@ Area* screen_area_init(int x, int y, int width, int height){
 
 
 
-/*
+/**
  * @author Alejandro Martin
  * @brief Libera memoria almacenada de manera dinamica de area
  * @param area, la estructura
@@ -184,8 +193,8 @@ void screen_area_destroy(Area* area){
 
 
 
-/*
- * @author Alejandro Martin
+/**
+ * @author  Carlos Miret
  * @brief Borra lo que hay en la pantalla
  * @param area, la estructura
  * @return nada, porque es una función de tipo void
@@ -203,8 +212,8 @@ void screen_area_clear(Area* area){
 
 
 
-/*
- * @author Alejandro Martin
+/**
+ * @author  Carlos Miret
  * @brief Resetea el cursor
  * @param area, la estructura
  * @return nada, porque es una función de tipo void
@@ -216,8 +225,8 @@ void screen_area_reset_cursor(Area* area){
 
 
 
-/*
- * @author Alejandro Martin
+/**
+ * @author  Carlos Miret
  * @brief Si la pantalla se va del limite la sube y se remplazan los caracteres
     especiales/
  * @param area, la estructura
@@ -247,7 +256,7 @@ void screen_area_puts(Area* area, char *str){
 
 
 
-/*
+/**
  * @author Alejandro Martin
  * @brief Devuelve el atributo cursor cuando se sitúa en la esquina superior derecha (sumando la altura y achura), es decir, cuado se sale de límites
  * @param area, la estructura
@@ -259,8 +268,8 @@ int screen_area_cursor_is_out_of_bounds(Area* area){
 
 
 
-/*
- * @author Francisco Nanclares
+/**
+ * @author  Carlos Miret
  * @brief Subir la pantalla donde se juega
  * @param area, la estructura
  * @return nada, ya que es una función de tipo void
@@ -275,7 +284,8 @@ void screen_area_scroll_up(Area* area){
 
 
 
-/* * @author Francisco Nanclares
+/** 
+ * @author Carlos Miret
  * @brief  Reemplaza los caracteres con tilde o la letra 'ñ', por esto: '??'
  * @param str, un puntero a char, el string
  * @return nada, ya que es una función de tipo void

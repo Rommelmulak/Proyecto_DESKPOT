@@ -3,7 +3,7 @@
 *
 *
 *@file set.c
-*@author FJNR & AMH
+*@author FJNR & AMH & CMF & MLR
 *@version 1.0
 *@date 19/02/2018
 *@copyright GNU Public License
@@ -21,17 +21,18 @@
 
 
 
-/*Estructura que define un conjunto(características) */
-
+/**
+ * @brief Estructura que define un conjunto(características) 
+*/
 struct _Set {
-  Id id_array[MAX_ID]; /*Identificador del stack*/
-  int num_array_actual; /*Numero actual del stack*/
+  Id id_array[MAX_ID]; /*!< Identificador del stack*/
+  int num_array_actual; /*!< Numero actual del stack*/
 };
 
 
 
-/*
- * @author Francisco Nanclares
+/**
+ * @author  Carlos Miret
  * @brief Se encarga de crear el conjunto
  * @param nada
  * @return NULL o conj_create (nuevo conjunto recien creado)
@@ -54,7 +55,7 @@ Set * set_create (){
 
 
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief Se encarga de liberar el conjunto
  * @param set puntero a Set
@@ -73,7 +74,7 @@ void set_destroy (Set * set){
 
 
 
-/*
+/**
  * @author Alejandro Martin
  * @brief Se encarga de anadir un elemento (id) al conjunto
  * @param set puntero a Set
@@ -94,8 +95,8 @@ STATUS set_push_id (Set *set , Id id){
 }
 
 
-/*
- * @author Alejandro Martin
+/**
+ * @author  Carlos Miret
  * @brief Se encarga de sacar un elmento si queremos
  * @param set puntero a Set
  * @return Id el identificador que usaremos
@@ -123,7 +124,7 @@ Id  set_pop_id (Set *set){
 }
 
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief Imprimir por pantalla los elementos de la estructura
  * @param set, puntero a set
@@ -144,7 +145,7 @@ STATUS set_print(Set* set) {
 
 
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief Devuelve un id de la posicion que quieras
  * @param set, puntero a set
@@ -164,7 +165,7 @@ Id get_specific_id (Set *set ,int num_array_actual_para){
 
 
 
-/*
+/**
  * @author Alejandro Martin
  * @brief Coge el top
  * @param set, puntero a set
@@ -182,8 +183,8 @@ int set_get_top (Set * set){
 
 
 
-/*
- * @author Alejandro Martin
+/**
+ * @author  Carlos Miret
  * @brief Comprueba si Set esta vacio (tiene alguna id)
  * @param set, puntero a set
  * @return status OK o ERROR
@@ -200,8 +201,8 @@ BOOL set_ISempty(Set *set){
 
 
 
-/*
- * @author Francisco Nanclares
+/**
+ * @author  Carlos Miret
  * @brief Elimina una id del set la que se quiera (parametro)
  * @param set, puntero a set
  * @param id Identificador

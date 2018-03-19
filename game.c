@@ -22,14 +22,21 @@
 #include "dice.h"
 
 /*Evitar numeros "magicos" por el codigo*/
-#define ID_J 1/*Id del player*/
-#define ID_O 1/*Id del objeto*/
-#define ID_DICE 1 /*Id del dado*/
-#define INIC_P 0/*Posicion inicial del jugador*/
-#define MAX_INPUT_OBJ/*tamano del nombre del objeto*/
-#define MAX_CASILLAS 12 /*Numero de casillas (variable si modifi. data.dat)*/
 
-#define N_CALLBACK 9 /*Numero maximo de callbacks*/
+/** @brief Id del player*/
+#define ID_J 1
+/** @brief Id del objeto*/
+#define ID_O 1
+/** @brief Id del dado*/
+#define ID_DICE 1 
+/** @brief Posicion inicial del jugador*/
+#define INIC_P 0
+/** @brief tamano del nombre del objeto*/
+#define MAX_INPUT_OBJ
+/** @brief Numero de casillas (variable si modifi. data.dat)*/
+#define MAX_CASILLAS 12 
+/** @brief Numero maximo de callbacks*/
+#define N_CALLBACK 9 
 
 /**                 Definidos en:
                         ||
@@ -48,26 +55,44 @@ P. F.: Private Function
 */
 
 /**
-   Define el tipo de función para las llamadas a esta
+ * @brief Define el tipo de función para las llamadas a esta
 */
 typedef void (*callback_fn)(Game* game);
 
-/**
-   Funciones de llamada para comando
-*/
+
 void game_callback_unknown(Game* game);
+
+
 void game_callback_exit(Game* game);
+
+
 void game_callback_following(Game* game);
+
+
 void game_callback_previous(Game* game);
+
+
 void game_callback_left (Game *game);
+
+
 void game_callback_right (Game *game);
+
+
 void game_callback_get(Game* game);
+
+
 void game_callback_drop(Game* game);
+
+
 void game_callback_roll_dice(Game *game);
 
+
+
+
+
 /**
-Array de punteros a funciones
-static = unico en este modulo (evitar que se exponga) (cuidadin)
+ * @brief Array de punteros a funciones
+ static = unico en este modulo (evitar que se exponga) (cuidadin)
 */
 static callback_fn game_callback_fn_list[N_CALLBACK]={
   game_callback_unknown,
@@ -83,26 +108,26 @@ static callback_fn game_callback_fn_list[N_CALLBACK]={
 
 
 /**
-   Funciones privadas, las cuales solo se ponen en el fichero.c
+  * @brief Funciones privadas, las cuales solo se ponen en el fichero.c
 */
 
 
 
-/*
+/**
  * @author Alejandro Martin
  * @brief Retorna el id de una casilla (asociándola con una posición predeterminada)
  * @param game, puntero a estructura,(dirección)
  * @param position, posición del espacio (en el array de punteros a Space)
  * @return NO_ID (si la posicion se sale de los límites), y si no, space_get_id (la posición)
  */
-Id     game_get_space_id_at(Game* game, int position);
+Id game_get_space_id_at(Game* game, int position);
 
 
  /*----------------------------------------------*/
 
 
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief Inicialización de la estructura Game
  * @param game, puntero a estructura Game (dirección)
@@ -134,7 +159,7 @@ STATUS game_create(Game* game) {
 
 
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief Crea el juego, carga las casillas (data.dat) y ponen el objeto y jugador
     en la posición primera.
@@ -159,7 +184,7 @@ STATUS game_create_from_file(Game* game, char* filename) {
 
 
 
-/*
+/**
  * @author Alejandro Martin
  * @brief Elimina las casillas creadas en la función anterior
  * @param game, puntero a estructura Game (dirección)
@@ -185,7 +210,7 @@ STATUS game_destroy(Game* game) {
 
 
 
-/*
+/**
  * @author Alejandro Martin
  * @brief Crea una casilla una vez comprobado el array (hasta que apunte a NULL)
     el espacio que se añade es el parámetro
@@ -215,7 +240,7 @@ STATUS game_add_space(Game* game, Space* space) {
 
 
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief Crea un objeto , comprobando el array de objetos ,lo recorre Entero
     hasta que se acaba y anade el objeto pasado por parametro
@@ -239,7 +264,7 @@ STATUS game_add_object (Game * game , Object* object){
   return OK;
 }
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief Retorna el id de una casilla (asociándola con una posición predeterminada)
  * @param game, puntero a estructura,(dirección)
@@ -257,7 +282,7 @@ Id game_get_space_id_at(Game* game, int position) {
 
 
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief Retorna la casilla (asociándola con una posición predeterminada)
     y con el id (param)
@@ -310,7 +335,7 @@ Object* game_get_object(Game* game, Id id){
 }
 
 
-/*
+/**
  * @author Alejandro Martin
  * @brief Esta funcion,
  * @param game, puntero a estructura,(dirección)
@@ -409,12 +434,13 @@ for (i=0;i<MAX_ID;i++){
 
   }
 }*/
+
 /**
  * @author Francisco Nanclares
  * @brief Devuelve la posicion del objeto (estructura game)
  * @param game, puntero a la estructura Game
  * @return la posición del objeto, modificada de la estructura
- *//*  return location(id) o NO_ID (id)
+ * return location(id) o NO_ID (id)
 */
 Id game_get_object_location(Game* game,Object *object) {
   int i,j;
@@ -545,7 +571,7 @@ void game_print_data(Game* game) {
 
 
 
-/*
+/**
  * @author Francisco Nanclares
  * @brief modificamos un string (parametro) descripcion grafica
  * @param game, puntero a estructura Game (dirección)
@@ -560,6 +586,8 @@ void game_set_parametro (Game * game , char *param){
 
   game->flag_command = OK;
 }
+
+
 /**
  * @author Alejandro Martin
  * @brief Posible llamada a la finalización del juego
@@ -573,7 +601,7 @@ BOOL game_is_over(Game* game) {
 
 /*----------------------------------------------*/
 /**
-   Callbacks : implementación para cada comando.
+  * @brief Callbacks : implementación para cada comando.
 */
 
 void game_callback_unknown(Game* game) {
